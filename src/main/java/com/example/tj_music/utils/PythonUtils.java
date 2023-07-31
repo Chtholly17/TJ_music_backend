@@ -12,6 +12,17 @@ import java.util.Map;
 @Component
 @PropertySource(value = {"classpath:application.properties"})
 public class PythonUtils {
+    
+
+    private static PythonUtils pythonUtils = new PythonUtils();
+    
+    public static PythonUtils getInstance() {
+        return pythonUtils;
+    }
+
+    private PythonUtils() {
+    }
+    
     /**
      * 获取分数
      * @param originPath

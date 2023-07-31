@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 
 @Data
 public class HttpUtils {
+
+    private HttpUtils() {
+    }
     /**
      * @description: 通过url获取输入流
      * @param urlPath

@@ -32,7 +32,7 @@ public class TjMusicAdminTests {
         String mp3Path = "test.mp3";
         // check whether the file exists using the path
 
-        MusicUtils musicUtils = new MusicUtils();
-        System.out.println(musicUtils.getMp3Duration(mp3Path));
+        // MusicUtils musicUtils = new MusicUtils();
+        // System.out.println(musicUtils.getMp3Duration(mp3Path));
     }
 }

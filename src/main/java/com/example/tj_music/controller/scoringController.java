@@ -28,8 +28,8 @@ import java.util.Map;
 public class scoringController {
     // please use the logger to print the log
     private static Logger log = Logger.getLogger("UserController.class");
-    @Autowired // auto-inject
-    private PythonUtils pythonUtils;
+    // @Autowired // auto-inject
+    // private PythonUtils pythonUtils;
     // user service
     @Autowired // auto-inject
     private scoringService scoringService;
@@ -51,7 +51,7 @@ public class scoringController {
      */
     @PostMapping("/getComments")
     public Result getComments(@RequestParam("preciseScore") String preciseScore, @RequestParam("qualityScore") String qualityScore, @RequestParam("pitchScore") String pitchScore) {
-        return pythonUtils.getComments(preciseScore, qualityScore, pitchScore);
+        return PythonUtils.getInstance().getComments(preciseScore, qualityScore, pitchScore);
     }
 
     /**
@@ -87,7 +87,7 @@ public class scoringController {
         System.out.println("work_voice_path: " + work_voice_path);
         System.out.println("outputPath: " + outputPath);
         Map<String, Object> map = new HashMap<>();
-        map.put("scores", pythonUtils.getScore("/root/TJ_music/static/admin/music/" + origin_name, outputPath));
+        map.put("scores", PythonUtils.getInstance().getScore("/root/TJ_music/static/admin/music/" + origin_name, outputPath));
         map.put("url", url);
         return Result.success(map);
     }

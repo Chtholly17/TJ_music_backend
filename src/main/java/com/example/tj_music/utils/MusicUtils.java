@@ -21,6 +21,16 @@ import java.util.EnumMap;
 @PropertySource(value = {"classpath:application.properties"})
 public class MusicUtils {
 
+
+    private static MusicUtils musicUtils = new MusicUtils();
+
+    private MusicUtils() {
+    }
+
+    public static MusicUtils getInstance() {
+        return musicUtils;
+    }
+
     @Value("${savePath}")
     private String savePath;
 

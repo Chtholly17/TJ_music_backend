@@ -29,8 +29,8 @@ public class informationController {
     @Autowired // auto-inject
     private informationService informationService;
 
-    @Autowired
-    private ImageUtils imageUtils;
+    // @Autowired
+    // private ImageUtils imageUtils;
 
     /**
      * 获取用户信息
@@ -129,7 +129,7 @@ public class informationController {
             return Result.fail("user not found");
         }
         try{
-            String url = imageUtils.upload(file, user_student_number, "avatar");
+            String url = ImageUtils.getInstance().upload(file, user_student_number, "avatar");
             informationService.updateUserProfileImage(url, user_student_number);
             return Result.success("upload success");
         } catch (IOException e) {

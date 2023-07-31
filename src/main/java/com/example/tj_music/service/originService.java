@@ -40,10 +40,10 @@ public class originService {
     @Autowired
     private WorkCommentMapper workCommentMapper;
 
-    @Autowired
-    private MusicUtils musicUtils;
-    @Autowired
-    private ImageUtils imageUtils;
+    // @Autowired
+    // private MusicUtils musicUtils;
+    // @Autowired
+    // private ImageUtils imageUtils;
 
     // @Autowired
     // private LrcUtils lrcUtils;
@@ -118,7 +118,7 @@ public class originService {
 
         // insert bgm
         try {
-             ret = musicUtils.upload(originFrontEnd.getOriginBgmusicFile(), "admin", filename_time+"_bgmusic");
+             ret = MusicUtils.getInstance().upload(originFrontEnd.getOriginBgmusicFile(), "admin", filename_time+"_bgmusic");
              origin.setOriginBgmusicFilename(ret.get(MusicUtils.UploadResult.URL).toString());
          } catch (Exception e) {
              e.printStackTrace();
@@ -126,7 +126,7 @@ public class originService {
          }
         // insert voice
          try {
-             ret = musicUtils.upload(originFrontEnd.getOriginVoiceFile(), "admin", filename_time+"_voice");
+             ret = MusicUtils.getInstance().upload(originFrontEnd.getOriginVoiceFile(), "admin", filename_time+"_voice");
              origin.setOriginVoiceFilename(ret.get(MusicUtils.UploadResult.URL).toString());
          } catch (Exception e) {
              e.printStackTrace();
@@ -134,7 +134,7 @@ public class originService {
          }
 //         ImageUtils imageUtils = new ImageUtils();
          try {
-             String prefaceFilename = imageUtils.upload(originFrontEnd.getOriginPrefaceFile(), "admin", filename_time+"_preface");
+             String prefaceFilename = ImageUtils.getInstance().upload(originFrontEnd.getOriginPrefaceFile(), "admin", filename_time+"_preface");
              origin.setOriginPrefaceFilename(prefaceFilename);
          } catch (Exception e) {
              e.printStackTrace();

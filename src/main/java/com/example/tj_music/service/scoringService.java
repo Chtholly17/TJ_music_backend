@@ -23,8 +23,8 @@ import static java.lang.Math.round;
 
 @Service
 public class scoringService {
-    @Autowired
-    private MusicUtils musicUtils;
+    // @Autowired
+    // private MusicUtils musicUtils;
     @Autowired
     private PythonUtils pythonUtils;
 
@@ -35,7 +35,7 @@ public class scoringService {
      * @return
      */
     public EnumMap<MusicUtils.UploadResult,Object> saveTmpMp3(MultipartFile file, String userStudentNumber) throws IOException {
-        return musicUtils.upload(file, userStudentNumber, "vocal");
+        return MusicUtils.getInstance().upload(file, userStudentNumber, "vocal");
     }
 
     /**
@@ -49,7 +49,7 @@ public class scoringService {
     public String mergeMp3(String bgmPath, String vocalPath, String userStudentNumber, String originName) {
         String outputPath = "/root/TJ_music/static/" + userStudentNumber + "/music/" + originName;
         System.out.println("origin_bgm_path: " + outputPath);
-        pythonUtils.merge(bgmPath, vocalPath, outputPath);
+        PythonUtils.getInstance().merge(bgmPath, vocalPath, outputPath);
         return outputPath;
     }
 

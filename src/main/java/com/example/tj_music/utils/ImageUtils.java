@@ -1,6 +1,7 @@
 package com.example.tj_music.utils;
 
 
+import com.example.tj_music.db.entity.Image;
 import com.example.tj_music.service.informationService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,6 +20,16 @@ import java.io.IOException;
 @Component
 @PropertySource(value = {"classpath:application.properties"})
 public class ImageUtils {
+
+    private static ImageUtils imageUtils = new ImageUtils();
+
+    private ImageUtils() {
+    }
+
+    public static ImageUtils getInstance() {
+        return imageUtils;
+    }
+
     @Value("${savePath}")
     private String savePath="/root/TJ_music/static/";
 
