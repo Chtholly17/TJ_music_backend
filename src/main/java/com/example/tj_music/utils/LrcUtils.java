@@ -13,6 +13,15 @@ import java.util.EnumMap;
 @PropertySource(value = {"classpath:application.properties"})
 public class LrcUtils {
 
+    private static LrcUtils lrcUtils = new LrcUtils();
+
+    public static LrcUtils getInstance() {
+        return lrcUtils;
+    }
+
+    private LrcUtils() {
+    }
+
     @Value("${savePath}")
     private String savePath;
 

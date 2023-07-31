@@ -45,8 +45,8 @@ public class originService {
     @Autowired
     private ImageUtils imageUtils;
 
-    @Autowired
-    private LrcUtils lrcUtils;
+    // @Autowired
+    // private LrcUtils lrcUtils;
 
     /**
      * search origin by key word.
@@ -144,7 +144,7 @@ public class originService {
          // insert lrc
         try {
             EnumMap<LrcUtils.UploadResult,Object> lrc_ret;
-            lrc_ret = lrcUtils.upload(originFrontEnd.getOriginLrcFile(), "admin", filename_time+"_lrc");
+            lrc_ret = LrcUtils.getInstance().upload(originFrontEnd.getOriginLrcFile(), "admin", filename_time+"_lrc");
             origin.setOriginLrcFilename(lrc_ret.get(LrcUtils.UploadResult.URL).toString());
         } catch (Exception e) {
             e.printStackTrace();
