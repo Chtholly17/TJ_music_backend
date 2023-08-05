@@ -1,4 +1,4 @@
-package com.example.tj_music.DTO;
+package com.example.tj_music.object.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,5 +10,5 @@ import org.springframework.web.multipart.MultipartFile;
 @NoArgsConstructor
 public class ImageDTO {
     MultipartFile file;
-    String user_student_number;
+    String userStudentNumber;
 }

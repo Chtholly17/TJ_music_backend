@@ -36,9 +36,9 @@ public interface OriginMapper {
     // insert origin
     @Insert("insert into origin(origin_name, origin_author, origin_bgmusic_filename, origin_voice_filename" +
             ", origin_duration, origin_preface_filename, origin_introduction, origin_lrc_filename, origin_tag) " +
-            "values(#{originName}, #{originAuthor}, #{originBgmusicFilename}, #{originVoiceFilename}, #{originDuration}," +
+            "values(#{originName}, #{originAuthor}, #{originBgMusicFilename}, #{originVoiceFilename}, #{originDuration}," +
             " #{originPrefaceFilename}, #{originIntroduction},#{originLrcFilename},#{originTag})")
-    void insertOrigin(String originName, String originAuthor, String originBgmusicFilename, String originVoiceFilename,
+    void insertOrigin(String originName, String originAuthor, String originBgMusicFilename, String originVoiceFilename,
                       Integer originDuration, String originPrefaceFilename, String originIntroduction,String originLrcFilename, String originTag);
 
     // delete origin by origin id
@@ -46,8 +46,8 @@ public interface OriginMapper {
     public void deleteOriginById(Integer originId);
 
     // update origin by origin id
-    @Select("update origin set origin_name = #{originName}, origin_author = #{originAuthor}, origin_bgmusic_filename = #{originBgmusicFilename}, origin_voice_filename = #{originVoiceFilename}, origin_duration = #{originDuration}, origin_preface_filename = #{originPrefaceFilename}, origin_introduction = #{originIntroduction}, origin_tag = #{originTag} where origin_id = #{originId}")
-    public void updateOriginById(Integer originId, String originName, String originAuthor, String originBgmusicFilename, String originVoiceFilename, Integer originDuration, String originPrefaceFilename, String originIntroduction, String originTag);
+    @Select("update origin set origin_name = #{originName}, origin_author = #{originAuthor}, origin_bgmusic_filename = #{originBgMusicFilename}, origin_voice_filename = #{originVoiceFilename}, origin_duration = #{originDuration}, origin_preface_filename = #{originPrefaceFilename}, origin_introduction = #{originIntroduction}, origin_tag = #{originTag} where origin_id = #{originId}")
+    public void updateOriginById(Integer originId, String originName, String originAuthor, String originBgMusicFilename, String originVoiceFilename, Integer originDuration, String originPrefaceFilename, String originIntroduction, String originTag);
 
     // update origin tag by origin id
     @Select("update origin set origin_tag = #{originTag} where origin_id = #{originId}")

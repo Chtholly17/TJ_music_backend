@@ -1,12 +1,12 @@
 package com.example.tj_music.service;
 
-import com.example.tj_music.VO.GetWorkListVO;
+import com.example.tj_music.object.vo.GetWorkListVO;
 import com.example.tj_music.db.entity.Origin;
 import com.example.tj_music.db.entity.User;
 import com.example.tj_music.db.mapper.OriginMapper;
 import com.example.tj_music.db.mapper.UserMapper;
 import com.example.tj_music.db.mapper.WorkCommentMapper;
-import com.example.tj_music.utils.Result;
+import com.example.tj_music.object.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class workService {
+public class WorkService {
     @Autowired
     private WorkMapper workMapper;
     @Autowired
@@ -82,7 +82,7 @@ public class workService {
 
 
         List<Work> works = null;
-        List<GetWorkListVO> works_vo = new ArrayList<>();
+        List<GetWorkListVO> worksVO = new ArrayList<>();
         if (order.equals("like")) {
             works = workMapper.selectWorkByTagWorkLikeDesc(tag);
         } else if (order.equals("comment")) {
@@ -111,10 +111,10 @@ public class workService {
             vo.setWorkCommentCnt(workMapper.getWorkCommentCntById(work.getWorkId()));
             vo.setWorkPrefaceFilename(work.getWorkPrefaceFilename());
 
-            works_vo.add(vo);
+            worksVO.add(vo);
         }
 
-        return Result.success(works_vo);
+        return Result.success(worksVO);
     }
 
     // delete the work and corresponding comments
@@ -144,33 +144,36 @@ public class workService {
      * insert work
      * @return
      */
-    public Result insertWork(String work_name, String work_comment, String user_student_number, Integer work_origin_version, Integer work_like, String work_voice_filename, String work_tag, String work_preface_filename, Integer work_quality_score, Integer work_precise_score, Integer work_pitch_score) {
+    public Result insertWork(String workName, String workComment, String userStudentNumber, 
+                             Integer workOriginVersion, Integer workLike, String workVoiceFilename, 
+                             String workTag, String workPrefaceFilename, Integer workQualityScore, 
+                             Integer workPreciseScore, Integer workPitchScore) {
         // construct a temp work
         Work work = new Work();
         // use the student number to find the user id
-        User user = userMapper.selectUserByStudentNumber(user_student_number);
+        User user = userMapper.selectUserByStudentNumber(userStudentNumber);
         if(user == null) {
-            return Result.fail("user not found with student number " + user_student_number);
+            return Result.fail("user not found with student number " + userStudentNumber);
         }
 
-        Origin origin=originMapper.selectOriginByOriginId(work_origin_version);
+        Origin origin=originMapper.selectOriginByOriginId(workOriginVersion);
         if(origin==null){
-            return Result.fail("origin not found with origin id " + work_origin_version);
+            return Result.fail("origin not found with origin id " + workOriginVersion);
         }
 
 
         // fill the work
-        work.setWorkName(work_name);
-        work.setWorkComment(work_comment);
+        work.setWorkName(workName);
+        work.setWorkComment(workComment);
         work.setWorkOwner(user.getUserId());
-        work.setWorkOriginVersion(work_origin_version);
-        work.setWorkLike(work_like);
-        work.setWorkVoiceFilename(work_voice_filename);
-        work.setWorkTag(work_tag);
-        work.setWorkPrefaceFilename(work_preface_filename);
-        work.setWorkQualityScore(work_quality_score);
-        work.setWorkPreciseScore(work_precise_score);
-        work.setWorkPitchScore(work_pitch_score);
+        work.setWorkOriginVersion(workOriginVersion);
+        work.setWorkLike(workLike);
+        work.setWorkVoiceFilename(workVoiceFilename);
+        work.setWorkTag(workTag);
+        work.setWorkPrefaceFilename(workPrefaceFilename);
+        work.setWorkQualityScore(workQualityScore);
+        work.setWorkPreciseScore(workPreciseScore);
+        work.setWorkPitchScore(workPitchScore);
         work.setWorkTag(origin.getOriginTag());
         work.setWorkCommentCnt(0);
         work.setWorkOwnerFansCnt(user.getUserFansCnt());

@@ -1,21 +1,21 @@
 package com.example.tj_music.controller;
 
 import com.example.tj_music.db.entity.Origin;
-import com.example.tj_music.service.originService;
-import com.example.tj_music.utils.Result;
+import com.example.tj_music.service.OriginService;
+import com.example.tj_music.object.Result;
 import org.apache.log4j.Logger;
-import org.python.antlr.op.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
-@RestController // @RestController = @Controller + @ResponseBody (return json)
-public class originController {
+@RestController
+@RequestMapping("/origin")
+public class OriginController {
     // please use the logger to print the log
     private static Logger log = Logger.getLogger("UserController.class");
     // user service
     @Autowired // auto-inject
-    private originService originService;
+    private OriginService originService;
 
     /**
      * search origin by key word.

@@ -19,7 +19,7 @@ public class Origin {
     private String originName;
     private String originAuthor;
 
-    private String originBgmusicFilename;
+    private String originBgMusicFilename;
 
     private String originVoiceFilename;
 

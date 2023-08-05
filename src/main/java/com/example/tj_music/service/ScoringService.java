@@ -1,28 +1,19 @@
 package com.example.tj_music.service;
 
-import com.example.tj_music.db.entity.Origin;
-import com.example.tj_music.db.entity.OriginFrontEnd;
-import com.example.tj_music.db.entity.Work;
-import com.example.tj_music.db.mapper.OriginMapper;
-
-import com.example.tj_music.db.mapper.WorkCommentMapper;
-import com.example.tj_music.db.mapper.WorkMapper;
 import com.example.tj_music.utils.PythonUtils;
 import com.example.tj_music.utils.MusicUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.tj_music.utils.Result;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.EnumMap;
-import java.util.List;
 
 import static java.lang.Math.round;
 
 @Service
-public class scoringService {
+public class ScoringService {
     // @Autowired
     // private MusicUtils musicUtils;
     @Autowired

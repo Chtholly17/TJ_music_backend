@@ -4,9 +4,8 @@ import com.example.tj_music.db.entity.User;
 import com.example.tj_music.db.mapper.AppealMapper;
 import com.example.tj_music.db.mapper.UserMapper;
 import com.example.tj_music.db.mapper.WorkMapper;
-import com.example.tj_music.utils.Result;
+import com.example.tj_music.object.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.system.ApplicationHome;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -19,13 +18,11 @@ import javax.mail.internet.MimeMessage;
 
 
 @Service
-public class accountService {
+public class AccountService {
     @Autowired
     private AppealMapper appealMapper;
     @Autowired
     private UserMapper userMapper;
-    @Autowired
-    private WorkMapper workMapper;
 
     /**
      * get all users

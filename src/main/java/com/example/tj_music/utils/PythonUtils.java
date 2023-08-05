@@ -1,9 +1,8 @@
 package com.example.tj_music.utils;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.example.tj_music.object.Result;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.util.HashMap;

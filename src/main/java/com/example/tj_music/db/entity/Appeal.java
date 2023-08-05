@@ -11,6 +11,7 @@ import java.util.Date;
 @Data
 public class Appeal {
     @Id
+
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer appealId;
     private Date createTime;

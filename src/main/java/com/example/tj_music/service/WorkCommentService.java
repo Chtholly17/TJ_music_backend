@@ -10,13 +10,12 @@ import com.example.tj_music.db.mapper.WorkCommentMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.tj_music.utils.Result;
-import org.springframework.web.bind.annotation.PostMapping;
+import com.example.tj_music.object.Result;
 
 import java.util.*;
 
 @Service
-public class workCommentService {
+public class WorkCommentService {
     @Autowired
     private WorkCommentMapper workCommentMapper;
     @Autowired

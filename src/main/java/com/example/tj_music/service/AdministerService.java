@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class administerService {
+public class AdministerService {
     @Autowired
     private AppealMapper appealMapper;
     @Autowired

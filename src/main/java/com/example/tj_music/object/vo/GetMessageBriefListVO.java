@@ -1,4 +1,4 @@
-package com.example.tj_music.VO;
+package com.example.tj_music.object.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,9 +8,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetMessageBriefListVO {
-    String student_number;
+    String StudentNumber;
     String nickname;
-    String profile_image_filename;
-    String last_message_content;
+    String profileImageFilename;
+    String lastMessageContent;
 
 }

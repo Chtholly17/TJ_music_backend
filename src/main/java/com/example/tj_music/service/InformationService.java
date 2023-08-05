@@ -3,7 +3,7 @@ package com.example.tj_music.service;
 import com.example.tj_music.db.mapper.FollowMapper;
 import com.example.tj_music.db.mapper.UserMapper;
 import com.example.tj_music.db.mapper.WorkMapper;
-import com.example.tj_music.utils.Result;
+import com.example.tj_music.object.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.tj_music.db.entity.User;
@@ -15,9 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class informationService {
-    @Autowired
-    private FollowMapper followMapper;
+public class InformationService {
     @Autowired
     private UserMapper userMapper;
     @Autowired
@@ -135,11 +133,11 @@ public class informationService {
      * get user information.
      * code:1 represents getting user information successfully.
      * code:0 represents getting user information failed. The account does not exist.
-     * @param user_student_number
+     * @param userStudentNumber
      * @return Result, data is a dictionary consist two keys: 'user' and 'workList'
      */
-    public Result getUserInformation(String user_student_number) {
-        User user = userMapper.selectUserByStudentNumber(user_student_number);
+    public Result getUserInformation(String userStudentNumber) {
+        User user = userMapper.selectUserByStudentNumber(userStudentNumber);
         // if the user exists
         if(user != null) {
             Integer userId = user.getUserId();

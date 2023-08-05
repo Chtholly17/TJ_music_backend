@@ -1,4 +1,4 @@
-package com.example.tj_music.utils;
+package com.example.tj_music.object;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

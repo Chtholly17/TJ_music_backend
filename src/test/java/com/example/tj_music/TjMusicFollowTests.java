@@ -1,9 +1,9 @@
 package com.example.tj_music;
 
-import com.example.tj_music.controller.followController;
+import com.example.tj_music.controller.FollowController;
 import com.example.tj_music.db.entity.Follow;
 import com.example.tj_music.db.entity.User;
-import com.example.tj_music.service.followService;
+import com.example.tj_music.service.FollowService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,8 +14,8 @@ import java.util.List;
 public class TjMusicFollowTests {
 
     @Autowired
-    private followService followService;
-    private followController followController;
+    private FollowService followService;
+    private FollowController followController;
 
 
 
@@ -103,15 +103,15 @@ public class TjMusicFollowTests {
     @Test
     public void testUpdateFollow() {
 //        System.out.println(("----- updateFollow method test ------"));
-//        followController.follow("20170101","20170102" );
-//        Integer current_follow_cnt= followService.selectUserByStudentNumber("20170101").getUserFollowCnt();
+//        FollowController.follow("20170101","20170102" );
+//        Integer current_follow_cnt= FollowService.selectUserByStudentNumber("20170101").getUserFollowCnt();
 //        assert current_follow_cnt == 1;
-//        Integer current_follower_cnt= followService.selectUserByStudentNumber("20170102").getUserFansCnt();
+//        Integer current_follower_cnt= FollowService.selectUserByStudentNumber("20170102").getUserFansCnt();
 //        assert current_follower_cnt == 1;
-//        followController.unfollow("20170101","20170102" );
-//        current_follow_cnt= followService.selectUserByStudentNumber("20170101").getUserFollowCnt();
+//        FollowController.unfollow("20170101","20170102" );
+//        current_follow_cnt= FollowService.selectUserByStudentNumber("20170101").getUserFollowCnt();
 //        assert current_follow_cnt == 0;
-//        current_follower_cnt= followService.selectUserByStudentNumber("20170102").getUserFansCnt();
+//        current_follower_cnt= FollowService.selectUserByStudentNumber("20170102").getUserFansCnt();
 //        assert current_follower_cnt == 0;
 
     }

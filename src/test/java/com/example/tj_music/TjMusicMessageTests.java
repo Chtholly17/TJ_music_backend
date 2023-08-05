@@ -1,10 +1,9 @@
 package com.example.tj_music;
 
-import com.example.tj_music.VO.GetMessageBriefListVO;
 import com.example.tj_music.db.entity.Message;
 import com.example.tj_music.db.mapper.MessageMapper;
-import com.example.tj_music.service.messageService;
-import com.example.tj_music.utils.Result;
+import com.example.tj_music.service.MessageService;
+import com.example.tj_music.object.Result;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +15,7 @@ public class TjMusicMessageTests {
     @Autowired
     private MessageMapper messageMapper;
     @Autowired
-    private messageService messageService;
+    private MessageService messageService;
 
     // test getAllMessage
     @Test

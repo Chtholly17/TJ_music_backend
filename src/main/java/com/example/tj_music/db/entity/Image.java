@@ -10,5 +10,5 @@ import org.springframework.web.multipart.MultipartFile;
 @NoArgsConstructor
 public class Image {
     MultipartFile file;
-    String user_student_number;
+    String userStudentNumber;
 }

@@ -1,26 +1,22 @@
 package com.example.tj_music.controller;
 
-import com.example.tj_music.service.originService;
-import com.example.tj_music.service.workService;
-import com.example.tj_music.utils.Result;
+import com.example.tj_music.object.WorkInfo;
+import com.example.tj_music.service.OriginService;
+import com.example.tj_music.service.WorkService;
+import com.example.tj_music.object.Result;
 import com.example.tj_music.db.entity.Origin;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class workController {
+public class WorkController {
     private static Logger log = Logger.getLogger("UserController.class");
 
     @Autowired
-    private workService workService;
+    private WorkService workService;
     @Autowired
-    private originService originService;
+    private OriginService originService;
 
     /**
      * get related works by origin id.Use for origin detail page
@@ -69,35 +65,28 @@ public class workController {
 
     /**
      * Insert work
-     * @param workName
-     * @param workComment
-     * @param userStudentNumber
-     * @param workOriginVersion
-     * @param workVoiceFilename
-     * @param workPreciseScore
-     * @param workQualityScore
-     * @param workPitchScore
+     * @param workInfo
      * @return
      */
     @PostMapping("/insertWork")
-    public Result insertWork(@RequestParam("workName") String workName, @RequestParam("workComment") String workComment, @RequestParam("workOwner") String workOwner, @RequestParam("workOriginVersion") int workOriginVersion, @RequestParam("workVoiceFilename") String workVoiceFilename, @RequestParam("workPreciseScore") int workPreciseScore, @RequestParam("workQualityScore") int workQualityScore, @RequestParam("workPitchScore") int workPitchScore) {
+    public Result insertWork(@RequestBody WorkInfo workInfo) {
         String workPrefaceFilename;
-        Origin origin = originService.getOriginByOriginId(workOriginVersion);
+        Origin origin = originService.getOriginByOriginId(workInfo.getWorkOriginVersion());
         if (origin == null) {
             return Result.fail("origin does not exist.");
         }
         return workService.insertWork(
-                workName,
-                workComment,
-                workOwner,
-                workOriginVersion,
-                0,
-                workVoiceFilename,
-                origin.getOriginTag(),
-                origin.getOriginPrefaceFilename(),
-                workPreciseScore,
-                workQualityScore,
-                workPitchScore
+            workInfo.getWorkName(),
+            workInfo.getWorkComment(),
+            workInfo.getWorkOwner(),
+            workInfo.getWorkOriginVersion(),
+            0,
+            workInfo.getWorkVoiceFilename(),
+            origin.getOriginTag(),
+            origin.getOriginPrefaceFilename(),
+            workInfo.getWorkPreciseScore(),
+            workInfo.getWorkQualityScore(),
+            workInfo.getWorkPitchScore()
         );
     }
 

@@ -2,7 +2,8 @@ package com.example.tj_music;
 
 import com.example.tj_music.db.entity.Work;
 import com.example.tj_music.db.mapper.WorkMapper;
-import com.example.tj_music.service.informationService;
+import com.example.tj_music.db.entity.User;
+import com.example.tj_music.service.InformationService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,7 +14,7 @@ import java.util.List;
 public class TjMusicInformationTests {
 
     @Autowired
-    private informationService informationService;
+    private InformationService informationService;
 
     // test getInformationById
     @Test
@@ -21,7 +22,7 @@ public class TjMusicInformationTests {
         System.out.println(("----- getInformationById method test ------"));
         //User
         System.out.println("----- User ------");
-        com.example.tj_music.db.entity.User return_value = informationService.getInformationById(1);
+        User return_value = informationService.getInformationById(1);
         System.out.println(return_value);
     }
     @Autowired

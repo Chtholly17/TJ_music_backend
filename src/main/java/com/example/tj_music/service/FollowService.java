@@ -1,6 +1,5 @@
 package com.example.tj_music.service;
 
-import com.example.tj_music.db.entity.Appeal;
 import com.example.tj_music.db.entity.Follow;
 import com.example.tj_music.db.entity.User;
 import com.example.tj_music.db.mapper.FollowMapper;
@@ -8,12 +7,11 @@ import com.example.tj_music.db.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Tuple;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class followService {
+public class FollowService {
     @Autowired
     private FollowMapper followMapper;
     @Autowired
@@ -57,13 +55,13 @@ public class followService {
     }
 
     // select the user by id
-    public User selectUserById(Integer user_id){
-        return userMapper.selectUserById(user_id);
+    public User selectUserById(Integer userId){
+        return userMapper.selectUserById(userId);
     }
 
     // select the user by student number
-    public User selectUserByStudentNumber(String user_student_number){
-        return userMapper.selectUserByStudentNumber(user_student_number);
+    public User selectUserByStudentNumber(String userStudentNumber){
+        return userMapper.selectUserByStudentNumber(userStudentNumber);
     }
 
     // select the follow by owner and target
@@ -72,29 +70,29 @@ public class followService {
     }
 
     // update the user follow cnt by id
-    public void updateUserFollowCntById(Integer user_id){
-        List<User> follow_list= selectFollowByOwner(user_id);
+    public void updateUserFollowCntById(Integer userId){
+        List<User> follow_list= selectFollowByOwner(userId);
         Integer follow_cnt = follow_list.size();
         // then update the user follow cnt
-        userMapper.updateUserFollowCntById(follow_cnt,user_id);
+        userMapper.updateUserFollowCntById(follow_cnt,userId);
     }
 
     // update the user fans cnt by id
-    public void updateUserFansCntById(Integer user_id){
+    public void updateUserFansCntById(Integer userId){
         // first get the true fans cnt
-        List<User> fans_list= selectFollowByTarget(user_id);
+        List<User> fans_list= selectFollowByTarget(userId);
         Integer fans_cnt = fans_list.size();
         // then update the user fans cnt
-        userMapper.updateUserFansCntById(fans_cnt,user_id);
+        userMapper.updateUserFansCntById(fans_cnt,userId);
     }
 
     // update the user posts cnt by id
-    public void updateUserPostsCntById(Integer user_id){
+    public void updateUserPostsCntById(Integer userId){
         // first get the true posts cnt
-        List<Follow> follow_list= followMapper.selectFollowByTarget(user_id);
+        List<Follow> follow_list= followMapper.selectFollowByTarget(userId);
         Integer posts_cnt = follow_list.size();
         // then update the user posts cnt
-        userMapper.updateUserPostsCntById( posts_cnt,user_id);
+        userMapper.updateUserPostsCntById( posts_cnt,userId);
     }
 
 

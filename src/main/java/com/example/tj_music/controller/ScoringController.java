@@ -2,55 +2,43 @@ package com.example.tj_music.controller;
 
 import com.example.tj_music.db.entity.Music;
 import com.example.tj_music.db.mapper.UserMapper;
-import com.example.tj_music.db.entity.User;
-import com.example.tj_music.service.originService;
-import com.example.tj_music.service.accountService;
-import com.example.tj_music.utils.Result;
-import com.example.tj_music.utils.MusicUtils;
-import com.example.tj_music.service.scoringService;
-import com.example.tj_music.service.workService;
+import com.example.tj_music.object.CommentInfo;
+import com.example.tj_music.service.AccountService;
+import com.example.tj_music.service.OriginService;
+import com.example.tj_music.object.Result;
+import com.example.tj_music.service.ScoringService;
+import com.example.tj_music.service.WorkService;
 import com.example.tj_music.db.entity.Origin;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.example.tj_music.utils.PythonUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-@RestController // @RestController = @Controller + @ResponseBody (return json)
-public class scoringController {
+@RestController
+@RequestMapping("/Scoring")
+public class ScoringController {
     // please use the logger to print the log
     private static Logger log = Logger.getLogger("UserController.class");
-    // @Autowired // auto-inject
-    // private PythonUtils pythonUtils;
-    // user service
     @Autowired // auto-inject
-    private scoringService scoringService;
+    private ScoringService scoringService;
     @Autowired
-    private originService originService;
-    @Autowired
-    private workService workService;
-    @Autowired
-    private accountService accountService;
-    @Autowired
-    private UserMapper userMapper;
+    private OriginService originService;
 
     /**
      * get comments by scores
-     * @param preciseScore
-     * @param qualityScore
-     * @param pitchScore
+     * @param commentInfo
      * @return
      */
     @PostMapping("/getComments")
-    public Result getComments(@RequestParam("preciseScore") String preciseScore, @RequestParam("qualityScore") String qualityScore, @RequestParam("pitchScore") String pitchScore) {
+    public Result getComments(@RequestBody CommentInfo commentInfo) {
+        String preciseScore = commentInfo.getPreciseScore();
+        String qualityScore = commentInfo.getQualityScore();
+        String pitchScore = commentInfo.getPitchScore();
         return PythonUtils.getInstance().getComments(preciseScore, qualityScore, pitchScore);
     }
 
@@ -72,7 +60,7 @@ public class scoringController {
         String[] parts = origin.getOriginVoiceFilename().split("/");
         String origin_name = parts[parts.length - 1];
 
-        parts = origin.getOriginBgmusicFilename().split("/");
+        parts = origin.getoriginBgMusicFilename().split("/");
         String origin_bgm_name = parts[parts.length - 1];
 
         scoringService.saveTmpMp3(file, userStudentNumber);

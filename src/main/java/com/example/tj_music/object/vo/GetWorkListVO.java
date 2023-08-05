@@ -1,4 +1,4 @@
-package com.example.tj_music.VO;
+package com.example.tj_music.object.vo;
 
 import lombok.Data;
 

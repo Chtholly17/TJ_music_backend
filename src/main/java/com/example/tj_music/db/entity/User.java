@@ -16,12 +16,12 @@ import java.time.LocalDateTime;
  * @description: user entity
  * user_id
  * create_time
- * user_student_number
+ * userStudentNumber
  * user_nickname
  * user_password
  * user_signature
  * user_status
- * user_profile_image_filename
+ * user_profileImageFilename
  * user_birthday
  * user_area1
  * user_area2
